@@ -27,8 +27,7 @@ public class ShapeFactory : ScriptableObject {
 			if (lastIndex >= 0) {
 				instance = pool[lastIndex];
 				pool.RemoveAt(lastIndex);
-			}
-			else {
+			} else {
 				instance = Instantiate(prefabs[shapeId]);
 				instance.ShapeId = shapeId;
 				SceneManager.MoveGameObjectToScene(
@@ -40,7 +39,6 @@ public class ShapeFactory : ScriptableObject {
 			instance.ShapeId = shapeId;
 		}
 		instance.SetMaterial(materials[materialId], materialId);
-		instance.ShapeId = shapeId;
 		return instance;
 	}
 

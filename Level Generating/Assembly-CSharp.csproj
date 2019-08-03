@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Persisting\PersistentStorage.cs" />
      <Compile Include="Assets\Scripts\Shape.cs" />
      <Compile Include="Assets\Scripts\ShapeFactory.cs" />
+     <Compile Include="Assets\Scripts\SpawnZone.cs" />
      <None Include="Assets\Shaders\InstancedColors.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/admin/work/unity/unity/Level Generating/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

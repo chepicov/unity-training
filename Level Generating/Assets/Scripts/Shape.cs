@@ -12,8 +12,7 @@ public class Shape : PersistableObject {
         set {
             if (shapeId == int.MinValue && value != int.MinValue) {
                 shapeId = value;
-            }
-            else {
+            } else {
                 Debug.LogError("Not allowed to change shapeId.");
             }
         }
