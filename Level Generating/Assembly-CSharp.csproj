@@ -55,14 +55,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Game.cs" />
+     <Compile Include="Assets\Scripts\Factories\ShapeFactory.cs" />
+     <Compile Include="Assets\Scripts\Main\Game.cs" />
+     <Compile Include="Assets\Scripts\Main\GameLevel.cs" />
+     <Compile Include="Assets\Scripts\Main\Shape.cs" />
      <Compile Include="Assets\Scripts\Persisting\GameDataReader.cs" />
      <Compile Include="Assets\Scripts\Persisting\GameDataWriter.cs" />
      <Compile Include="Assets\Scripts\Persisting\PersistableObject.cs" />
      <Compile Include="Assets\Scripts\Persisting\PersistentStorage.cs" />
-     <Compile Include="Assets\Scripts\Shape.cs" />
-     <Compile Include="Assets\Scripts\ShapeFactory.cs" />
-     <Compile Include="Assets\Scripts\SpawnZone.cs" />
+     <Compile Include="Assets\Scripts\Spawn\CompositeSpawnZone.cs" />
+     <Compile Include="Assets\Scripts\Spawn\CubeSpawnZone.cs" />
+     <Compile Include="Assets\Scripts\Spawn\SpawnZone.cs" />
+     <Compile Include="Assets\Scripts\Spawn\SphereSpawnZone.cs" />
      <None Include="Assets\Shaders\InstancedColors.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/admin/work/unity/unity/Level Generating/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

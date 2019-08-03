@@ -6,25 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class Game : PersistableObject {
     const int saveVersion = 2;
-
+    
 	float creationProgress;
 	float destructionProgress;
     List<Shape> shapes;
     string savePath;
     int loadedLevelBuildIndex;
+	[SerializeField] ShapeFactory shapeFactory;
+    [SerializeField] PersistentStorage storage;
+	[SerializeField] KeyCode createKey = KeyCode.C;
+	[SerializeField] KeyCode saveKey = KeyCode.S;
+	[SerializeField] KeyCode newGameKey = KeyCode.N;
+	[SerializeField] KeyCode loadKey = KeyCode.L;
+    [SerializeField] KeyCode destroyKey = KeyCode.X;
+    [SerializeField] int levelCount;
 
-    public PersistentStorage storage;
-	public KeyCode createKey = KeyCode.C;
-	public KeyCode saveKey = KeyCode.S;
-	public KeyCode newGameKey = KeyCode.N;
-	public KeyCode loadKey = KeyCode.L;
-    public KeyCode destroyKey = KeyCode.X;
-	public float CreationSpeed { get; set; }
+    
+
+	public SpawnZone SpawnZoneOfLevel { get; set; }
+    public float CreationSpeed { get; set; }
     public float DestructionSpeed { get; set; }
+	public static Game Instance { get; private set; }
 
-	public ShapeFactory shapeFactory;
-    public int levelCount;
-
+	void OnEnable () {
+		Instance = this;
+	}
 
     void Start () {
 		shapes = new List<Shape>();
@@ -97,7 +103,7 @@ public class Game : PersistableObject {
     void CreateShape () {
 		Shape instance = shapeFactory.GetRandom();
 		Transform t = instance.transform;
-		t.localPosition = Random.insideUnitSphere * 5f;
+		t.localPosition = SpawnZoneOfLevel.SpawnPoint;
 		t.localRotation = Random.rotation;
 		t.localScale = Vector3.one * Random.Range(0.1f, 1f);   
         instance.SetColor(Random.ColorHSV(
