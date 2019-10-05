@@ -1,5 +1,20 @@
+
+public struct Level
+{
+    public string Id;
+    public int WinPoints;
+
+    public Level(string id, int winPoints)
+    {
+        Id = id;
+        WinPoints = winPoints;
+    }
+}
+
 public static class SceneConstants
 {
-  public const string Level1 = "level1";
-  public const string Level2 = "level2";
+    public static readonly Level[] Levels = {
+        new Level("level1", 10),
+        new Level("level2", 15),
+    };
 }

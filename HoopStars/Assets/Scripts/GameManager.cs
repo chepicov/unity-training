@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     Rigidbody playerRigidbody;
     private static GameManager instance;
     private static int ActiveLevel = -1;
-    static string[] Levels = { SceneConstants.Level1, SceneConstants.Level2 };
     static int[] WinPoints = { 10, 15 };
 
     public static GameManager Instance
@@ -46,10 +45,10 @@ public class GameManager : MonoBehaviour
     {
         if (ActiveLevel > -1)
         {
-            SceneManager.UnloadSceneAsync(Levels[ActiveLevel]);
+            SceneManager.UnloadSceneAsync(SceneConstants.Levels[ActiveLevel].Id);
         }
-        ActiveLevel = Mathf.Min(ActiveLevel + 1, Levels.Length - 1);
-        SceneManager.LoadScene(Levels[ActiveLevel], LoadSceneMode.Additive);
+        ActiveLevel = Mathf.Min(ActiveLevel + 1, SceneConstants.Levels.Length - 1);
+        SceneManager.LoadScene(SceneConstants.Levels[ActiveLevel].Id, LoadSceneMode.Additive);
 
         float delayTime = 0.2f;
         playerRigidbody.velocity = Vector3.zero;
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartPhysics(Rigidbody rb, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(Levels[ActiveLevel]));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneConstants.Levels[ActiveLevel].Id));
         playerRigidbody.isKinematic = false;
         UIController.Instance.ShowPlay();
     }
